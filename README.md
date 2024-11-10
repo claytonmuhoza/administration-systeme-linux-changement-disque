@@ -1,6 +1,5 @@
 # QUESTION 
-
-qui a deux partions sde de 20g su un disque sda de 25g en utilisant la commande dd on te demande Attention ! Il est crucial d’effectuer les étapes suivantes de manière rigoureuse !
+Qui a deux partions sde de 20g su un disque sda de 25g en utilisant la commande dd on te demande Attention ! Il est crucial d’effectuer les étapes suivantes de manière rigoureuse !
 Les modifications réalisées avec fdisk ne sont effectives que lorsque vous demandez l'écriture
 • Exécutez la commande fdisk de manière interactive sur DiskFinal.
 • Expliquez la signification du message en rouge qui apparaît et pourquoi nous l’obtenons.
@@ -22,7 +21,8 @@ disponible de la partition qui le contient : sudo resize2fs <DiskFinal/PartMax>
 Exécutez la commande e2fsck si resize2fs vous le demande puis recommencez.
 • Exécutez à nouveau la commande donnant l’espace libre sur le système de fichiers de PartMax.
 Que constatez vous ?
-----
+
+
 Pour répondre à cette demande, voici les étapes que vous devez suivre pour redimensionner une partition après avoir cloné un disque sur un autre disque plus grand, tout en utilisant des commandes sous Linux.
 
 ### 1. **Exécuter `fdisk` sur le nouveau disque (sda)**
@@ -132,7 +132,10 @@ Après toutes ces étapes, vous aurez réussi à redimensionner la partition pou
 
 Exécutez à nouveau la commande donnant l’espace libre sur le système de fichiers de sda2
 Que constatez vous ?
-----
+
+
+
+
 Voici comment procéder pour l'observation finale, en prenant en compte la gestion des UUID des disques et la suppression du contenu du disque source (DiskInitial).
 
 ### 1. **Lister les UUID des périphériques de type bloc**
@@ -205,7 +208,11 @@ Une fois que votre VM a redémarré sur votre système installé, connectez-vous
 ◦ Comment pouvez-vous vérifier que votre système à bien démarré sur le nouveau disque ?
 ◦ Identifiez à nouveau les périphériques de type bloc et demandez l’espace libre des système de
 fichiers avec la commande df -h
-----
+
+
+
+
+
 Voici les étapes pour vérifier que votre machine virtuelle (VM) a bien démarré sur le nouveau disque après le redémarrage.
 
 ### 1. **Exécuter la commande `lsblk`**
@@ -278,7 +285,11 @@ En utilisant tous les outils nécessaires, pour chacune des partitions existante
 • La version de ce système de fichiers,
 • L’UUID du système de fichiers.
 Relevez également le type de partitionnement (normalement déjà connu)
-----
+
+
+
+
+
 Pour accomplir ces tâches, voici les étapes détaillées que vous devez suivre après avoir redémarré votre système en **mode live** avec les disques `DiskInitial` et `DiskFinal` comme définis.
 
 ### 1. **Rechercher dans le man de la commande `lsblk` l'effet du commutateur `-f`**
@@ -386,7 +397,10 @@ Vous veillerez à respecter :
 partition du système,
 ◦ Le type des partitions.
 • Comparez vos deux disques à l’aide des commandes fdisk -l et lsblk -f. 
----
+
+
+
+
 Pour créer une structure de partitions similaire sur le disque `DiskFinal` (sde) à celle du disque `DiskInitial` (sda) et effectuer la comparaison, suivez les étapes ci-dessous. Vous utiliserez des outils tels que `fdisk` et `mkfs` pour créer les partitions et formater les systèmes de fichiers.
 
 ### Étapes pour créer la structure de partitions sur `DiskFinal` (sde)
@@ -665,7 +679,10 @@ l’exécuter.
 Vérifiez à l’aide de la commande ls -la le contenu de ces deux répertoires. Par acquis de conscience,
 faites de même avec les sous-répertoires home.
 • Démontez les deux systèmes de fichiers
-----
+
+
+
+
 Voici les étapes détaillées pour monter les partitions systèmes, exclure certains fichiers comme `swap.img` et `lost+found` lors de la copie, puis mesurer l’efficacité avec la commande `time`.
 
 ### 1. **Monter les partitions systèmes des deux disques**
@@ -821,7 +838,9 @@ Vérifiez que les partitions de DiskInitial ont bien disparu.
 • Redémarrez le système en éjectant le CDROM.
 Votre système va redémarrer sur votre nouveau disque. Constatez-le en vous logeant avec votre utilisateur et en
 vérifiant les points de montages actifs avec lsblk.
----
+
+
+
 Voici les étapes finales pour effacer la table de partitions de `DiskInitial`, vérifier qu'il ne contient plus de partitions, redémarrer le système et s'assurer que tout fonctionne correctement avec votre nouveau disque.
 
 ### 1. **Effacer la table de partitions de `DiskInitial`**
